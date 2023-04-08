@@ -1,6 +1,10 @@
-import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from '@Pages/Home/Home';
 
-//сделаешь тут роуты
 export const Router = () => {
-  return <div>Router</div>;
+  return (
+    <Routes>
+      <Route path="/card" element={<Home />} />
+    </Routes>
+  );
 };
