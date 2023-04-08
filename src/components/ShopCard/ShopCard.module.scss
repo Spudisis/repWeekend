@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+.card {
+  width: 260px;
+  padding: 20px 14px;
+  background-color: $white-color;
+  box-shadow: $shadow-dark-20;
+  border-radius: $radius-8;
+}
+.name {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  color: $black-color;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 15px 0;
+}
+
+.icon {
+  font-size: 20px;
+  color: $dark-teal-color;
+}
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $black-color;
+  height: 80px;
+}

@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.link {
+  font-size: 26px;
+  color: $dark-teal-color;
+  cursor: pointer;
+}

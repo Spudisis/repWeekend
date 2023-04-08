@@ -8,10 +8,10 @@ type Layout = {
 
 export const Layout = ({ children }: Layout) => {
   return (
-    <>
+    <div className="layout">
       <Header />
       {children}
       <Footer />
-    </>
+    </div>
   );
 };

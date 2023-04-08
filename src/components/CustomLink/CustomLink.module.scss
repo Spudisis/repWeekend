@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  border-radius: $radius-8;
+  height: 50px;
+  border: 1px solid transparent;
+  outline: none;
+
+  &.primary {
+    color: $white-color;
+    background-color: $dark-teal-color;
+    &:hover {
+      background-color: $black-color;
+      box-shadow: $shadow-dark-20;
+    }
+  }
+  &.outlined {
+    color: $dark-color;
+    background-color: transparent;
+    border: 1px solid $dark-color;
+    &:hover {
+      background-color: $dark-color;
+      color: $white-color;
+    }
+  }
+  &.sm {
+    padding: 12px 15px;
+  }
+  &.md {
+    padding: 12px 20px;
+  }
+  &.lg {
+    padding: 12px 25px;
+  }
+  &.xl {
+    padding: 12px 30px;
+  }
+  &.full {
+    padding: 12px 10px;
+    width: 100%;
+  }
+}

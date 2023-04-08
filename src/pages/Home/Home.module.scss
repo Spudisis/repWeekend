@@ -1,0 +1,11 @@
+.main {
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  &Shops {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
