@@ -9,13 +9,13 @@ import Title from '@Components/Title';
 import { CustomModal } from '@Components/CustomModal/CustomModal';
 import { useModal } from '../../hooks/hooks';
 import { CustomButton } from '@Components/CustomButton/CustomButton';
-import { Button } from '@mui/material';
+import { Button, TextField, Stack } from '@mui/material';
 import { observer } from 'mobx-react';
 import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
 
 export const Profile = observer(() => {
   const { statusAuth, userInfo, getLogo } = StoreAuthStatus;
-  const {  getOneCity, changeDataUser } = ProfileStore;
+  const {  getOneCity, changeDataUser,changePassword } = ProfileStore;
 
   const [sity, setSity]= React.useState<any>('')
 
@@ -27,8 +27,14 @@ export const Profile = observer(() => {
     city_id: userInfo && userInfo.city_id ? userInfo.city_id : '',
   })
 
+  const [changePass, setChangePass] = React.useState({
+    old_password: '',
+    new_password: ''
+  })
+
   const redirect = useNavigate();
   const { toggleModal, isVisible } = useModal();
+  const modal2 = useModal()
 
   useEffect(() => {
     !statusAuth && redirect('/login');
@@ -103,6 +109,19 @@ export const Profile = observer(() => {
                 Изменить профиль
               </CustomButton>
               {/* <button onClick={() => changeLogoUser(userInfo.id, file)}>kkkk</button> */}
+            </div>
+            <div className={style.btns}>
+            <CustomModal toggleModal={modal2.toggleModal} isVisible={modal2.isVisible}>
+              <Stack justifyContent="space-between">
+
+              <TextField label="Old password" variant="filled" type='password' value={changePass.old_password} onChange={(e:any)=>setChangePass({...changePass, old_password: e.target.value})} />
+              <TextField label="New Password" variant="filled" type='password' value={changePass.new_password} onChange={(e:any)=>setChangePass({...changePass, new_password: e.target.value})} />
+              <Button onClick={()=>changePassword(changePass)}>Изменить</Button>
+              </Stack>
+            </CustomModal>
+            <CustomButton size="full" onClick={modal2.toggleModal}>
+                Изменить пароль
+              </CustomButton>
             </div>
 
             {/* <input type="file" onChange={setFile}  /> */}

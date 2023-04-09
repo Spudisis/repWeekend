@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import { InputSearch } from '@Components/InputSearch/InputSearch';
 import { CustomLink } from '@Components/CustomLink/CustomLink';
 import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
+
 import { StoreAuthStatus } from '../../app/Store/Auth';
+
+import { ChooseCountry } from '@Components/ChooseCountry/ChooseCountry';
+
 
 export const Header = () => {
   const { statusAuth, userInfo } = StoreAuthStatus;
@@ -28,6 +32,7 @@ export const Header = () => {
             )}
           </div>
           <div className={style.headerBottom}>
+            <ChooseCountry />
             <ChooseCity />
             <Navbar />
           </div>
