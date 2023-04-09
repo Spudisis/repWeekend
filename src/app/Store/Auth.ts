@@ -1,11 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import { InstanceLogin } from "../../http/Agent/Login.agent";
+import { InstanceUser } from "../../http/Agent/User.agent";
 
 class AuthStatus {
     constructor(){
         makeAutoObservable(this, {})
     }
     private _statusAuth =  false
+
+    userInfo:any = null
 
     get statusAuth(){
         return this._statusAuth
@@ -15,7 +18,9 @@ class AuthStatus {
     }
     checkAuth = async() => {
         try {
-            await InstanceLogin.getInfoMe()
+            const userMe = await InstanceLogin.getInfoMe()
+            const data = await InstanceUser.getUserById(userMe.uid) 
+            this.userInfo = data
             this.statusAuth = true
         } catch {
             

@@ -6,12 +6,19 @@ import { StoreLogin } from './store/store';
 import { observer } from 'mobx-react';
 import { StoreAuthStatus } from '../../app/Store/Auth';
 import Title from '@Components/Title';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = observer(() => {
   const { statusAuth } = StoreAuthStatus;
   const { getCaptcha, SignIn } = StoreLogin;
   const [login, setLogin] = React.useState('goodman');
   const [pass, setPass] = React.useState('password');
+
+  const redirect = useNavigate()
+  
+  React.useEffect(()=>{
+    if (statusAuth) redirect('/profile')
+  }, [statusAuth])
 
   React.useEffect(() => {
     getCaptcha();
