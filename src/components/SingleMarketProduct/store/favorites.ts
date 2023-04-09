@@ -19,7 +19,7 @@ class Favorites {
   fetchAllFavorites = async () => {
     try {
       let res = await InstanceFavorites.getAllFavorites();
-      console.log(res.items);
+
       this.favorites = res.items;
     } catch {
       console.log('Ошибка получения товаров');
