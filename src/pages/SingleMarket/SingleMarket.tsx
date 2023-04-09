@@ -5,14 +5,27 @@ import style from './SingleMarket.module.scss';
 
 export const SingleMarket = () => {
   const { id } = useParams();
+  if (!id) return <div>Something with wrong</div>;
+  const [signleMarket, setSingleMarket] = useState();
 
-  // const [signleMarket, setSingleMarket] = useState();
-  // useEffect(() => {
-  //   const fetchSingleShops = async () => {
-  //     const data = await InstanceMarket.getOneMarket(id);
-  //     setSingleMarket(data);
-  //   };
-  //   fetchSingleShops();
-  // }, []);
-  return <div className={style.singleMarket}>shop {id}</div>;
+  useEffect(() => {
+    try {
+      const fetchSingleMarket = async () => {
+        const data = await InstanceMarket.getOneMarket(Number(id));
+        setSingleMarket(data);
+      };
+      fetchSingleMarket();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  console.log(signleMarket);
+
+  return (
+    <div className={style.singleMarket}>
+      <div className="container">
+        <div className={style.wrapper}></div>
+      </div>
+    </div>
+  );
 };

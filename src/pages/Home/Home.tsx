@@ -5,14 +5,18 @@ import { InstanceMarket } from '../../http/Agent/Market.agent';
 import { useEffect, useState } from 'react';
 
 export const Home = () => {
-  const [allShops, setAllShops] = useState<any>();
+  const [allMarket, setAllMarket] = useState<any>();
 
   useEffect(() => {
-    const fetchShops = async () => {
-      const data = await InstanceMarket.getAllMarkets();
-      setAllShops(data);
-    };
-    fetchShops();
+    try {
+      const fetchMarket = async () => {
+        const data = await InstanceMarket.getAllMarkets();
+        setAllMarket(data);
+      };
+      fetchMarket();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
@@ -20,8 +24,8 @@ export const Home = () => {
       <main className={style.main}>
         <div className="container">
           <div className={style.wrapper}>
-            <div className={style.wrapperShops}>
-              {allShops?.map((shop: any) => (
+            <div className={style.wrapperMarkets}>
+              {allMarket?.map((shop: any) => (
                 <ShopCard key={shop.id} {...shop} />
               ))}
             </div>
