@@ -9,7 +9,6 @@ class Login extends BasicAgent{
         const { data } = await this._http.post<any>(`/auth/login`, body);
         console.log(data)
         localStorage.setItem('token', data.access_token)
-        
         return data;
     }
     async refreshToken(): Promise<any> {
