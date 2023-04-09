@@ -1,3 +1,9 @@
-.block{
-    padding: 0px 15px;
+@import '../../styles/variables';
+
+fieldset {
+  border-color: $dark-teal-color !important;
+}
+
+.select {
+  width: 200px;
 }

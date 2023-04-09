@@ -20,6 +20,11 @@ class Cart extends BasicAgent {
     console.log(data);
     return data;
   }
+  async getProduct(id: any) {
+    const { data } = await this._http.get<any>(`/product/${id}`);
+    console.log('Агент', data);
+    return data;
+  }
 }
 
 export const InstanceCart = new Cart();

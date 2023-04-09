@@ -37,14 +37,6 @@ export const SingleMarket = () => {
             ) : (
               <div className={style.empty}>Пусто...</div>
             )}
-
-            {/* <div className={style.blockPrice}>
-              <div className={style.control}>
-                <HiOutlineMinusSm className={style.btn} />
-                <div className={style.count}>5</div>
-                <HiOutlinePlusSm className={style.btn} />
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

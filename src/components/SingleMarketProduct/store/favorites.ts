@@ -11,7 +11,7 @@ class Favorites {
     try {
       await InstanceFavorites.addUserFavorite(body);
 
-      this.fetchAllFavorites();
+      console.log(this.favorites);
     } catch {
       console.log('Не добавлено');
     }
@@ -19,19 +19,11 @@ class Favorites {
   fetchAllFavorites = async () => {
     try {
       let res = await InstanceFavorites.getAllFavorites();
-      this.favorites = Object.entries(res).map(([key, value]) => ({ key, value }));
+      console.log(res.items);
+      this.favorites = res.items;
     } catch {
       console.log('Ошибка получения товаров');
     }
   };
-
-  // getAlladdToFavorites = async () => {
-  //   try {
-  //     let res = await InstanceCart.getCart();
-  //     this.favorites = Object.entries(res).map(([key, value]) => ({ key, value }));
-  //   } catch {
-  //     console.log('Ошибка получения товаров');
-  //   }
-  // };
 }
 export const StoreFavorites = new Favorites();

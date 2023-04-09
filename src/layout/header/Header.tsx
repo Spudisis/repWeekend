@@ -14,7 +14,7 @@ export const Header = () => {
             <Link to="/">
               <div className={style.logo}>Logo</div>
             </Link>
-          
+
             <InputSearch />
             <div className={style.auth}>
               <CustomLink path="/login">Войти</CustomLink>
@@ -22,7 +22,8 @@ export const Header = () => {
             </div>
           </div>
           <div className={style.headerBottom}>
-          <ChooseCity /> <Navbar />
+            <ChooseCity />
+            <Navbar />
           </div>
         </div>
       </div>

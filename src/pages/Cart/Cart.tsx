@@ -9,26 +9,22 @@ import style from './Cart.module.scss';
 
 export const Cart = observer(() => {
   const { getAllProducts, cart } = StoreCart;
-
   const { statusAuth } = StoreAuthStatus;
 
   useEffect(() => {
     getAllProducts();
   }, []);
 
-  console.log(cart);
-  if (!cart) return null;
-
   console.log(statusAuth);
+  console.log('Корзина', cart);
+
   return (
     <Layout>
       <section className={style.cart}>
         <div className="container">
           <Title headingType="h2">Корзина</Title>
           <div className={style.wrapper}>
-            {cart?.map((product: any) => (
-              <CartCard key={product.id} {...product} />
-            ))}
+            {cart && cart?.map((product: any) => <CartCard key={product.key} product={product} />)}
           </div>
         </div>
       </section>

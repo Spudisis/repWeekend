@@ -7,12 +7,11 @@ import ReactPaginate from 'react-paginate';
 
 export const Home = () => {
   const [allMarket, setAllMarket] = useState<any>();
-  
+
   const [itemOffset, setItemOffset] = useState(0);
   useEffect(() => {
     try {
       const fetchMarket = async () => {
-        
         const data = await InstanceMarket.getAllMarkets('rating', 12, itemOffset);
         setAllMarket(data);
       };
@@ -22,9 +21,9 @@ export const Home = () => {
     }
   }, [itemOffset]);
 
-  const handlePageClick = (event:any) => {
-    console.log(event.selected)
-    const newOffset = event.selected+1
+  const handlePageClick = (event: any) => {
+    console.log(event.selected);
+    const newOffset = event.selected + 1;
     setItemOffset(newOffset);
   };
   return (
@@ -47,23 +46,22 @@ export const Home = () => {
                   height: '100%',
                 }}
               >
-              <ReactPaginate
-                 activeClassName={style.item + ' ' + style.active}
-                 breakClassName={style.item + ' ' + style.breakMe}
-                 breakLabel={'...'}
-                 containerClassName={style.pagination}
-                 disabledClassName={style.disabledPage}
-                nextLabel="next >"
-                onPageChange={handlePageClick}
-                pageClassName={style.item + ' ' + style.paginationPage}
-                pageRangeDisplayed={5}
-                pageCount={10}
-                previousLabel="< previous"
-                renderOnZeroPageCount={null}
-              />
-            </div></div>
-            
-            
+                <ReactPaginate
+                  activeClassName={style.item + ' ' + style.active}
+                  breakClassName={style.item + ' ' + style.breakMe}
+                  breakLabel={'...'}
+                  containerClassName={style.pagination}
+                  disabledClassName={style.disabledPage}
+                  nextLabel="next >"
+                  onPageChange={handlePageClick}
+                  pageClassName={style.item + ' ' + style.paginationPage}
+                  pageRangeDisplayed={5}
+                  pageCount={10}
+                  previousLabel="< previous"
+                  renderOnZeroPageCount={null}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </main>
