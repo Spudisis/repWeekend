@@ -14,11 +14,11 @@ export const Login = observer(() => {
   const [login, setLogin] = React.useState('goodman');
   const [pass, setPass] = React.useState('password');
 
-  const redirect = useNavigate()
-  
-  React.useEffect(()=>{
-    if (statusAuth) redirect('/profile')
-  }, [statusAuth])
+  const redirect = useNavigate();
+
+  React.useEffect(() => {
+    if (statusAuth) redirect('/profile');
+  }, [statusAuth]);
 
   React.useEffect(() => {
     getCaptcha();

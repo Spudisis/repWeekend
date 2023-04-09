@@ -1,12 +1,8 @@
+import style from './FavoriteCard.module.scss';
+import { FC } from 'react';
 import { ISingleMarket } from '../../types';
-import { FC, useEffect } from 'react';
-import style from './CartCard.module.scss';
 
-export const CartCard: FC<ISingleMarket> = ({ name, raw_description, price, id }) => {
-  // useEffect(() => {
-  //   const fetchSingleCard
-  // }, []);
-
+export const FavoriteCard: FC<ISingleMarket> = ({ name, price, raw_description }) => {
   return (
     <div className={style.card}>
       <div className={style.name}>{name}</div>

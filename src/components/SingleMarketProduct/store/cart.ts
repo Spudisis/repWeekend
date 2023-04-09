@@ -16,10 +16,11 @@ class Cart {
       console.log('Не добавлено');
     }
   };
+
   getAllProducts = async () => {
     try {
       let res = await InstanceCart.getCart();
-      this.cart = res;
+      this.cart = Object.entries(res).map(([key, value]) => ({ key, value }));
     } catch {
       console.log('Ошибка получения товаров');
     }

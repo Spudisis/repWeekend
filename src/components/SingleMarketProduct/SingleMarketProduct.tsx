@@ -3,25 +3,23 @@ import { FC } from 'react';
 import { HiOutlineHeart } from 'react-icons/hi';
 import { ISingleMarket } from '../../types';
 import style from './SingleMarketProduct.module.scss';
-import { StoreCart } from './stote/store';
+import { StoreCart } from './store/cart';
+import { StoreFavorites } from './store/favorites';
 
-export const SingleMarketProduct: FC<ISingleMarket> = ({ name, raw_description, price }) => {
-  const product = { name, raw_description, price };
+export const SingleMarketProduct: FC<ISingleMarket> = ({ name, raw_description, price, id }) => {
+  const product = { name, raw_description, price, id };
   const { addToCart } = StoreCart;
+  const { addToFavorite } = StoreFavorites;
 
-  addToCart({
-    product_id: 1,
-    quantity: 1,
-  });
   return (
     <div className={style.card}>
       <div className={style.name}>{name}</div>
       <div className={style.raw_description}>{raw_description}</div>
       <div className={style.price}>{Math.floor(Number(price))} руб.</div>
-      <CustomButton onClick={() => addToCart(product)} size="full">
+      <CustomButton onClick={() => addToCart({ product_id: id, quantity: 1 })} size="full">
         Добавить в корзину
       </CustomButton>
-      <HiOutlineHeart className={style.favorite} />
+      <HiOutlineHeart onClick={() => addToFavorite({ product_id: id })} className={style.favorite} />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { Login } from '@Pages/Login/Login';
 import { Registration } from '@Pages/Registration';
 import { SingleMarket } from '@Pages/SingleMarket/SingleMarket';
 import { NotFound } from '@Pages/NotFound/NotFound';
-import { Profile } from '@Pages/Profile';
+import { Profile } from '@Pages/Profile/Profile';
 
 export const AppRouter = () => {
   return (
@@ -19,7 +19,7 @@ export const AppRouter = () => {
 
       <Route path="/login" element={<Login />} />
 
-      <Route path='/profile' element={<Profile/>} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

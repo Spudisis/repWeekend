@@ -1,6 +1,7 @@
 import { BasicAgent } from './Basic.agent';
 
 class Cart extends BasicAgent {
+  [x: string]: any;
   constructor() {
     super(import.meta.env.VITE_APP_API as string);
   }

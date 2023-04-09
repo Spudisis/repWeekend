@@ -1,4 +1,4 @@
-import { StoreCart } from '@Components/SingleMarketProduct/stote/store';
+import { StoreCart } from '@Components/SingleMarketProduct/store/cart';
 import Title from '@Components/Title';
 import { CartCard } from '@Components/CartCard/CartCard';
 import { Layout } from '../../layout/Layout';
@@ -26,9 +26,9 @@ export const Cart = observer(() => {
         <div className="container">
           <Title headingType="h2">Корзина</Title>
           <div className={style.wrapper}>
-            {/* {cart?.map((product: any) => (
+            {cart?.map((product: any) => (
               <CartCard key={product.id} {...product} />
-            ))} */}
+            ))}
           </div>
         </div>
       </section>
