@@ -14,7 +14,7 @@ export const Cart = observer(() => {
   useEffect(() => {
     getAllProducts();
   }, []);
-
+this,
   console.log(statusAuth);
   console.log('Корзина', cart);
 

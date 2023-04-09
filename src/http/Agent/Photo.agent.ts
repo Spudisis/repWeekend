@@ -7,7 +7,7 @@ class Photo extends BasicAgent{
   
     async getPhoto(id:number){
         const {data} = await this._http.get<any>(`/photo/${id}`);
-        console.log(data)
+        // console.log(data)
         return data
     }
 }

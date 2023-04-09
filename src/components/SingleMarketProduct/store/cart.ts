@@ -3,7 +3,7 @@ import { InstanceCart } from '../../../http/Agent/Cart.agent';
 
 class Cart {
   constructor() {
-    makeAutoObservable({});
+    makeAutoObservable(this,{});
   }
   cart: any = null;
 
