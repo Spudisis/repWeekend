@@ -5,17 +5,17 @@ class City extends BasicAgent{
         super(import.meta.env.VITE_APP_API as string)
     }
     async getAllCity(limit=10, offset=0){
-        const { data } = await this._http.post<unknown>(`/city/?limit=${limit}&offset=${offset}`);
+        const { data } = await this._http.post<any>(`/city/?limit=${limit}&offset=${offset}`);
         console.log(data)
         return data;    
     }
     async getOneCityById(id:number){
-        const { data } = await this._http.post<unknown>(`/city/${id}`);
+        const { data } = await this._http.post<any>(`/city/${id}`);
         console.log(data)
         return data; 
     }
     async getOneCityByName(name:string){
-        const { data } = await this._http.post<unknown>(`/city/${name}`);
+        const { data } = await this._http.post<any>(`/city/${name}`);
         console.log(data)
         return data; 
     }

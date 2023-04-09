@@ -5,7 +5,7 @@ class Review extends BasicAgent{
         super(import.meta.env.VITE_APP_API as string)
     }
     async getReviewProduct(id:number){
-        const {data} = await this._http.get<unknown>(`/review/${id}`);
+        const {data} = await this._http.get<any>(`/review/${id}`);
         console.log(data)
         return data
     }

@@ -4,20 +4,17 @@ class Login extends BasicAgent{
     constructor(){
         super(import.meta.env.VITE_APP_API as string)
     }
-    async authUser(body:unknown): Promise<any> {
+    async authUser(body:any): Promise<any> {
         const { data } = await this._http.post<any>(`/auth/login`, body);
         console.log(data)
-        setAuthTokens({
-            accessToken: data.access_token,
-            refreshToken: data.refresh_token
-        })
-        console.log(data)
+        localStorage.setItem('token', data.access_token)
+        
         return data;
     }
     async refreshToken(): Promise<any> {
         const { data } = await this._http.post<any>(`/auth/refresh`);
         console.log(data)
-       
+        localStorage.setItem('token', data.access_token)
         return data;
     }
     async getInfoMe(): Promise<any> {
