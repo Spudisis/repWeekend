@@ -4,14 +4,15 @@ import style from './title.module.scss';
 interface TitleI {
   headingType?: string;
   children: ReactNode;
+  position?: 'center' | 'right' | 'left';
 }
 
-const Title: FC<TitleI> = ({ children, headingType = 'h1' }) => {
+const Title: FC<TitleI> = ({ children, headingType = 'h1', position = 'center' }) => {
   switch (headingType) {
     case 'h2':
       return <h2 className={style.title_h2}>{children}</h2>;
     case 'h3':
-      return <h3 className={style.title_h2}>{children}</h3>;
+      return <h3 className={`${style.title_h2} ${style[position]}`}>{children}</h3>;
     case 'h4':
       return <h4 className={style.title_h4}>{children}</h4>;
     default:

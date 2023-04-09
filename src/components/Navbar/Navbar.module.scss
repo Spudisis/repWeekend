@@ -2,15 +2,30 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 30px;
+  width: 100%;
 }
 .links {
   display: flex;
   align-items: center;
   gap: 20px;
+  &Icon {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
 }
 .link {
-  font-size: 26px;
-  color: $dark-teal-color;
-  cursor: pointer;
+  font-size: 20px;
+  color: $black-color;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: $dark-teal-color;
+  }
+  &Icon {
+    font-size: 26px;
+    color: $dark-teal-color;
+    cursor: pointer;
+  }
 }
