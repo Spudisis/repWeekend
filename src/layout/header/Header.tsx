@@ -3,6 +3,7 @@ import { Navbar } from '@Components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import { InputSearch } from '@Components/InputSearch/InputSearch';
 import { CustomLink } from '@Components/CustomLink/CustomLink';
+import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
 
 export const Header = () => {
   return (
@@ -13,6 +14,7 @@ export const Header = () => {
             <Link to="/">
               <div className={style.logo}>Logo</div>
             </Link>
+          
             <InputSearch />
             <div className={style.auth}>
               <CustomLink path="/login">Войти</CustomLink>
@@ -20,7 +22,7 @@ export const Header = () => {
             </div>
           </div>
           <div className={style.headerBottom}>
-            <Navbar />
+          <ChooseCity /> <Navbar />
           </div>
         </div>
       </div>
