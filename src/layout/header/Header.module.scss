@@ -24,6 +24,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+    .selects {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
   }
 }
 
