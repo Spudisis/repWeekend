@@ -1,7 +1,8 @@
 import style from './Header.module.scss';
 import { Navbar } from '@Components/Navbar/Navbar';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { InputSearch } from '@Components/InputSearch/InputSearch';
+import { CustomLink } from '@Components/CustomLink/CustomLink';
 
 export const Header = () => {
   return (
@@ -13,23 +14,13 @@ export const Header = () => {
               <div className={style.logo}>Logo</div>
             </Link>
             <InputSearch />
-            <Navbar />
+            <div className={style.auth}>
+              <CustomLink path="/login">Войти</CustomLink>
+              <CustomLink path="/registration">Зарeгистрироваться</CustomLink>
+            </div>
           </div>
           <div className={style.headerBottom}>
-            <div className={style.links}>
-              <NavLink to={''} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : `${style.link}`)}>
-                Категории
-              </NavLink>
-              <NavLink to={''} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : `${style.link}`)}>
-                Магазины
-              </NavLink>
-              <NavLink to={''} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : `${style.link}`)}>
-                Товары
-              </NavLink>
-              <NavLink to={''} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : `${style.link}`)}>
-                Форум
-              </NavLink>
-            </div>
+            <Navbar />
           </div>
         </div>
       </div>

@@ -11,11 +11,6 @@
     font-weight: 600;
     color: $black-color;
     font-size: 38px;
-  }
-  &_h3 {
-    font-weight: 600;
-    color: $black-color;
-    font-size: 34px;
     &.center {
       text-align: center;
     }
@@ -25,5 +20,10 @@
     &.right {
       text-align: right;
     }
+  }
+  &_h3 {
+    font-weight: 600;
+    color: $black-color;
+    font-size: 34px;
   }
 }

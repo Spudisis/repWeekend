@@ -12,23 +12,15 @@
   top: 0;
   left: 0;
   &Top {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 60px;
     justify-content: space-between;
   }
   &Bottom {
+    width: 100%;
     display: flex;
-    .links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      .link {
-        font-size: 20px;
-        font-weight: 400;
-        color: $black-color;
-      }
-    }
   }
 }
 
@@ -39,6 +31,11 @@
   gap: 20px;
 }
 
+.auth {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
 .logo {
   font-size: 30px;
   font-weight: 500;
