@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+
+fieldset {
+  border-color: $dark-teal-color !important;
+}
+
+.select {
+  width: 200px;
+}

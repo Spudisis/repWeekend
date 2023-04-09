@@ -1,3 +1,4 @@
+import axios from "axios";
 import { BasicAgent } from "./Basic.agent";
 import {setAuthTokens} from 'axios-jwt';
 class Login extends BasicAgent{
@@ -12,8 +13,9 @@ class Login extends BasicAgent{
         return data;
     }
     async refreshToken(): Promise<any> {
-        const { data } = await this._http.post<any>(`/auth/refresh`);
+        const { data } = await axios.post<any>(`/auth/refresh`);
         console.log(data)
+       
         localStorage.setItem('token', data.access_token)
         return data;
     }

@@ -7,7 +7,15 @@ class Profile {
   constructor() {
     makeAutoObservable({});
   }
-  changePassword = async () => {};
+  changePassword = async (data:any) => {
+    try {
+      InstanceUser.changePassword(data);
+      
+    } catch {
+      console.log('error change pass')
+    }
+
+  };
   changeDataUser = async (id:any, data: any) => {
       console.log('aaa')
    

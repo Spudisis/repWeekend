@@ -11,13 +11,14 @@ class Registration {
     
      signUp= async(body:any) => {
         try {
-            await InstanceRegistration.createUser({
+            const data = await InstanceRegistration.createUser({
                 username: body.login,
                 password: body.pass,
                 role_name: 'user',
                 uid_captcha: this._captcha.uid,
                 value_captcha: 'gas'
               })
+              console.log(data)
             StoreAuthStatus.statusAuth = true    
         } catch  {
             console.log('warning auth')
