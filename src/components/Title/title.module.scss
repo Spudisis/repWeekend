@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.title {
+  &_h1 {
+    font-weight: 700;
+    font-size: 56px;
+    letter-spacing: 0.07em;
+    color: $white-color;
+  }
+  &_h2 {
+    font-weight: 600;
+    color: $black-color;
+    font-size: 38px;
+  }
+  &_h3 {
+    font-weight: 600;
+    color: $black-color;
+    font-size: 34px;
+    &.center {
+      text-align: center;
+    }
+    &.left {
+      text-align: left;
+    }
+    &.right {
+      text-align: right;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 .card {
   width: 260px;
-  padding: 20px 14px;
+  padding: 20px 16px;
   background-color: $white-color;
   box-shadow: $shadow-dark-20;
   border-radius: $radius-8;
@@ -19,11 +19,11 @@
   gap: 10px;
   font-size: 18px;
   font-weight: 400;
-  margin: 15px 0;
+  margin-top: 15px;
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 25px;
   color: $dark-teal-color;
 }
 .description {
@@ -32,4 +32,10 @@
   line-height: 26px;
   color: $black-color;
   height: 80px;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+  margin: 15px 0 20px;
 }
