@@ -11,6 +11,9 @@
   font-size: 1.25rem;
   border-radius: $radius-8;
   padding: 0.6rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
   &:disabled {
     background-color: $grey-color !important;
     pointer-events: none;

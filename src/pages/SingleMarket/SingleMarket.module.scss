@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+.singleMarket {
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.empty {
+  font-size: 50px;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+}
+
+// .blockPrice {
+//   display: flex;
+//   align-items: center;
+//   gap: 60px;
+// }
+// .control {
+//   display: flex;
+//   align-items: center;
+//   gap: 15px;
+// }
+// .count {
+//   font-size: 26px;
+//   font-weight: 500;
+//   color: $black-color;
+// }
