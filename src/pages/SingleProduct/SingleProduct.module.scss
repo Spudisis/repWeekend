@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 30px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: $black-color;
+  width: 700px;
+}
+.description,
+.raw_description {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.raw_description {
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: 400;
+}

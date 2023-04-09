@@ -5,21 +5,18 @@ import { observer } from 'mobx-react';
 import { useEffect, useState } from 'react';
 import { Layout } from '../../layout/Layout';
 import style from './Favorites.module.scss';
-import { StoreAuthStatus } from '../../app/Store/Auth';
 
 export const Favorites = observer(() => {
-  
   const { fetchAllFavorites, favorites } = StoreFavorites;
 
   useEffect(() => {
     fetchAllFavorites();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log('Cтраница фавориты', favorites);
-  }, [favorites])
+  }, [favorites]);
 
-  
   return (
     <Layout>
       <section className={style.favorites}>

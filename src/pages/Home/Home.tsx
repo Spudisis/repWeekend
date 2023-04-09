@@ -4,7 +4,7 @@ import style from './Home.module.scss';
 import { InstanceMarket } from '../../http/Agent/Market.agent';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-
+import Title from '@Components/Title';
 export const Home = () => {
   const [allMarket, setAllMarket] = useState<any>();
 
@@ -30,6 +30,7 @@ export const Home = () => {
     <Layout>
       <main className={style.main}>
         <div className="container">
+          <Title headingType="h2">Магазины</Title>
           <div className={style.wrapper}>
             <div className={style.wrapperMarkets}>
               {allMarket?.map((shop: any) => (

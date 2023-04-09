@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import { InputSearch } from '@Components/InputSearch/InputSearch';
 import { CustomLink } from '@Components/CustomLink/CustomLink';
 import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
+import { StoreAuthStatus } from '../../app/Store/Auth';
 
 export const Header = () => {
+  const { statusAuth, userInfo } = StoreAuthStatus;
+
+  console.log(statusAuth);
   return (
     <header className={style.header}>
       <div className="container">
@@ -16,10 +20,12 @@ export const Header = () => {
             </Link>
 
             <InputSearch />
-            <div className={style.auth}>
-              <CustomLink path="/login">Войти</CustomLink>
-              <CustomLink path="/registration">Зарeгистрироваться</CustomLink>
-            </div>
+            {!statusAuth && (
+              <div className={style.auth}>
+                <CustomLink path="/login">Войти</CustomLink>
+                <CustomLink path="/registration">Зарeгистрироваться</CustomLink>
+              </div>
+            )}
           </div>
           <div className={style.headerBottom}>
             <ChooseCity />

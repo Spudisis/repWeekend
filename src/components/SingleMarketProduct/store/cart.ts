@@ -1,18 +1,19 @@
 import { makeAutoObservable } from 'mobx';
 import { InstanceCart } from '../../../http/Agent/Cart.agent';
+import { toast } from 'react-toastify';
 
 class Cart {
   constructor() {
-    makeAutoObservable(this,{});
+    makeAutoObservable(this, {});
   }
   cart: any = null;
 
   addToCart = async (body: any) => {
     try {
       await InstanceCart.addToCart(body);
-
       this.getAllProducts();
       console.log(this.cart);
+      toast.success('Добавлено в корзину');
     } catch {
       console.log('Не добавлено');
     }
@@ -32,6 +33,8 @@ class Cart {
       await InstanceCart.removeCart(body);
 
       this.getAllProducts();
+      toast.success('Удалено из корзины');
+
       console.log(this.cart);
     } catch {
       console.log('Не добавлено');

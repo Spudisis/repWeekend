@@ -1,37 +1,31 @@
 import style from './Navbar.module.scss';
 import { HiOutlineUser, HiOutlineHeart, HiOutlineShoppingCart, HiOutlineBell } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
     <nav className={style.navbar}>
       <div className={style.links}>
-        <Link to={''} className={style.link}>
+        <NavLink to={'/'} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : style.link)}>
           Категории
-        </Link>
-        <Link to={''} className={style.link}>
+        </NavLink>
+        <NavLink to={'/'} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : style.link)}>
           Магазины
-        </Link>
-        <Link to={''} className={style.link}>
-          Товары
-        </Link>
-        <Link to={''} className={style.link}>
-          Форум
-        </Link>
+        </NavLink>
       </div>
       <div className={style.linksIcon}>
-        <Link to="/cart">
-          <HiOutlineShoppingCart className={style.linkIcon} />
-        </Link>
-        <Link to="/favorites">
-          <HiOutlineHeart className={style.linkIcon} />
-        </Link>
-        <Link to="/profile">
-          <HiOutlineUser className={style.linkIcon} />
-        </Link>
-        <Link to="">
-          <HiOutlineBell className={style.linkIcon} />
-        </Link>
+        <NavLink className={({ isActive }) => (isActive ? `${style.linkIcon} ${style.active}` : style.linkIcon)} to="/cart">
+          <HiOutlineShoppingCart />
+        </NavLink>
+        <NavLink className={({ isActive }) => (isActive ? `${style.linkIcon} ${style.active}` : style.linkIcon)} to="/favorites">
+          <HiOutlineHeart />
+        </NavLink>
+        <NavLink className={({ isActive }) => (isActive ? `${style.linkIcon} ${style.active}` : style.linkIcon)} to="/profile">
+          <HiOutlineUser />
+        </NavLink>
+        <NavLink className={({ isActive }) => (isActive ? `${style.linkIcon} ${style.active}` : style.linkIcon)} to="/">
+          <HiOutlineBell />
+        </NavLink>
       </div>
     </nav>
   );

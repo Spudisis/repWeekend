@@ -23,6 +23,10 @@
   color: $black-color;
 }
 
+.name {
+  text-transform: uppercase;
+  width: 180px;
+}
 .btns {
   display: flex;
   align-items: center;

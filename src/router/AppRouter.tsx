@@ -7,6 +7,7 @@ import { Registration } from '@Pages/Registration';
 import { SingleMarket } from '@Pages/SingleMarket/SingleMarket';
 import { NotFound } from '@Pages/NotFound/NotFound';
 import { Profile } from '@Pages/Profile/Profile';
+import { SingleProduct } from '@Pages/SingleProduct/SingleProduct';
 
 export const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRouter = () => {
       <Route path="/cart" element={<Cart />} />
 
       <Route path="/market/:id" element={<SingleMarket />} />
+      <Route path="/product/:id" element={<SingleProduct />} />
 
       <Route path="/login" element={<Login />} />
 

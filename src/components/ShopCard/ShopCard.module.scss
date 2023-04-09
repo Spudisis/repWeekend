@@ -11,6 +11,8 @@
   font-size: 24px;
   font-weight: 500;
   color: $black-color;
+  text-transform: uppercase;
+  width: 100%;
 }
 .rating {
   display: flex;
@@ -19,7 +21,7 @@
   gap: 10px;
   font-size: 18px;
   font-weight: 400;
-  margin-top: 15px;
+  margin: 15px 0;
 }
 
 .icon {
