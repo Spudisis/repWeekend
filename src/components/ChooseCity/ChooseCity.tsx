@@ -15,8 +15,8 @@ const StyledButton = styled(Button)({
 })
 
 
-export const ChooseCity = () => {
-    const [selectCity, setSelectedCity]= React.useState<any>("City") 
+export const ChooseCity = ({value, func}:any) => {
+    const [selectCity, setSelectedCity]= React.useState<any>(value? value :"City") 
     const [object, setObject] = React.useState<any>(null)
     const [AllCity, setAllCity] =React.useState([])
     const [load, setLoad] = React.useState(false)
@@ -38,6 +38,7 @@ export const ChooseCity = () => {
     }, [page])
     React.useEffect(()=>{
         console.log(selectCity)
+        func && func(selectCity)
     }, [selectCity])
     const ChangePage = (next:boolean)=>{
         console.log(next)

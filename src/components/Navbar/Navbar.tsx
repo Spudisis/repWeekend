@@ -26,7 +26,7 @@ export const Navbar = () => {
         <Link to="/favorites">
           <HiOutlineHeart className={style.linkIcon} />
         </Link>
-        <Link to="">
+        <Link to="/profile">
           <HiOutlineUser className={style.linkIcon} />
         </Link>
         <Link to="">

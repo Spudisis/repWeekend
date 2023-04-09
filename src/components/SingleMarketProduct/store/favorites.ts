@@ -19,7 +19,7 @@ class Favorites {
   fetchAllFavorites = async () => {
     try {
       let res = await InstanceFavorites.getAllFavorites();
-      this.favorites = Object.entries(res).map(([key, value]) => ({ key, value }));
+      this.favorites = res.items;
     } catch {
       console.log('Ошибка получения товаров');
     }

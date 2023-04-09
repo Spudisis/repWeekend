@@ -16,7 +16,8 @@ class Login{
                 username: body.login,
                 password: body.pass,
               })
-            StoreAuthStatus.statusAuth = true    
+            StoreAuthStatus.statusAuth = true
+              
         } catch  {
             console.log('warning auth')
         }
