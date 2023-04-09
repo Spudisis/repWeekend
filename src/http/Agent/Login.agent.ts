@@ -1,21 +1,29 @@
 import { BasicAgent } from "./Basic.agent";
-
+import {setAuthTokens} from 'axios-jwt';
 class Login extends BasicAgent{
     constructor(){
         super(import.meta.env.VITE_APP_API as string)
     }
-    async getAllTasks(body:unknown): Promise<unknown> {
-        const { data } = await this._http.post<unknown>(`/auth/login`, body);
+    async authUser(body:any): Promise<any> {
+        const { data } = await this._http.post<any>(`/auth/login`, body);
+        console.log(data)
+        localStorage.setItem('token', data.access_token)
+        
+        return data;
+    }
+    async refreshToken(): Promise<any> {
+        const { data } = await this._http.post<any>(`/auth/refresh`);
+        console.log(data)
+        localStorage.setItem('token', data.access_token)
+        return data;
+    }
+    async getInfoMe(): Promise<any> {
+        const { data } = await this._http.get<any>(`/auth/me`);
         console.log(data)
         return data;
     }
-    async getInfoMe(): Promise<unknown> {
-        const { data } = await this._http.get<unknown>(`/auth/me`);
-        console.log(data)
-        return data;
-    }
-    async getCaptchaLogin(): Promise<unknown> {
-        const { data } = await this._http.post<unknown>(`/auth/captcha`);
+    async getCaptchaLogin(): Promise<any> {
+        const { data } = await this._http.get<any>(`/auth/captcha`);
         console.log(data)
         return data;
     }

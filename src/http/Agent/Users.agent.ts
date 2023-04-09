@@ -5,7 +5,7 @@ class Users extends BasicAgent{
         super(import.meta.env.VITE_APP_API as string)
     }
     async getUserBalance(id:number) {
-        const { data } = await this._http.get<unknown>(`/v1/pay/user/${id}/balance`);
+        const { data } = await this._http.get<any>(`/v1/pay/user/${id}/balance`);
         console.log(data)
         return data;
     }

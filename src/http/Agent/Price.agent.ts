@@ -5,7 +5,7 @@ class Price extends BasicAgent{
         super(import.meta.env.VITE_APP_API as string);
     }
     async getCurrencyPrice(){
-        const {data} = await this._http.post<unknown>(`/price/`);
+        const {data} = await this._http.post<any>(`/price/`);
         console.log(data)
         return data
     }

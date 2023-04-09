@@ -4,18 +4,18 @@ class Cart extends BasicAgent{
     constructor(){
         super(import.meta.env.VITE_APP_API as string)
     }
-    async addToCart(body:unknown): Promise<unknown> {
-        const { data } = await this._http.post<unknown>(`/cart/add`,body);
+    async addToCart(body:any): Promise<any> {
+        const { data } = await this._http.post<any>(`/cart/add`,body);
         console.log(data)
         return data;
     }
     async getCart(){
-        const {data} = await this._http.get<unknown>(`/cart`);
+        const {data} = await this._http.get<any>(`/cart`);
         console.log(data)
         return data
     }
-    async removeCart(body:unknown): Promise<unknown> {
-        const { data } = await this._http.post<unknown>(`/cart/remove`, body);
+    async removeCart(body:any): Promise<any> {
+        const { data } = await this._http.post<any>(`/cart/remove`, body);
         console.log(data)
         return data;
     }

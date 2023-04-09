@@ -6,17 +6,17 @@ class Payments extends BasicAgent{
     }
    
     async paymentGatewayList(){
-        const {data} = await this._http.get<unknown>(`/v1/pay/payment/gateways`);
+        const {data} = await this._http.get<any>(`/v1/pay/payment/gateways`);
         console.log(data)
         return data
     }
-    async paymentDeposit(body:unknown){
-        const {data} = await this._http.post<unknown>(`/v1/pay/payment/deposit`,body);
+    async paymentDeposit(body:any){
+        const {data} = await this._http.post<any>(`/v1/pay/payment/deposit`,body);
         console.log(data)
         return data
     }
-    async paymentWithdraw(body:unknown){
-        const {data} = await this._http.post<unknown>(`/v1/pay/payment/withdraw`,body);
+    async paymentWithdraw(body:any){
+        const {data} = await this._http.post<any>(`/v1/pay/payment/withdraw`,body);
         console.log(data)
         return data
     }
