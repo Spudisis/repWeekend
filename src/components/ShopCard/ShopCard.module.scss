@@ -41,3 +41,10 @@
   overflow-y: hidden;
   margin: 15px 0 20px;
 }
+
+.img{
+  object-fit: cover;
+  width: 100%;
+  min-height: 230px;
+  height: auto;
+}

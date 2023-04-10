@@ -14,10 +14,10 @@ import { observer } from 'mobx-react';
 import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
 
 export const Profile = observer(() => {
-  const { statusAuth, userInfo, getLogo } = StoreAuthStatus;
+  const { statusAuth, userInfo, getLogo, avatar } = StoreAuthStatus;
   const {  getOneCity, changeDataUser,changePassword } = ProfileStore;
 
-  const [sity, setSity]= React.useState<any>('')
+  
 
   const [object, setObject] = React.useState({
     btc_address: userInfo && userInfo.btc_address ? userInfo.btc_address : '',
@@ -31,7 +31,9 @@ export const Profile = observer(() => {
     old_password: '',
     new_password: ''
   })
-
+  React.useEffect(()=>{
+    getLogo()
+  },[avatar])
   const redirect = useNavigate();
   const { toggleModal, isVisible } = useModal();
   const modal2 = useModal()
@@ -43,25 +45,11 @@ export const Profile = observer(() => {
   useEffect(() => {
     InstanceCart.getCart();
   }, []);
-  
-
-  useEffect(()=>{
-    const func = async()=>{
-
-      if(userInfo?.city_id){
-        const data =  await getOneCity(userInfo.city_id)
-        setSity(data)
-      }   
-    }
-    func()
-  }, [userInfo?.city_id])
-
  
   const Change = (n:any)=> {
     console.log(n)
     if (n){
       setObject({...object, city_id: n.id ? n.id : object.city_id})
-
     }
   }
   
@@ -93,11 +81,10 @@ export const Profile = observer(() => {
               Профиль
             </Title>
             <div className={style.user}>
-              <div className={style.avatar} style={{ background: '' }}></div>
-              <div className={style.name}>username: {userInfo?.username ? userInfo?.username : ''}</div>
+              <div className={style.avatar} style={{ background: `url(${avatar})` }}></div>
+              
             </div>
 
-            <div className={style.city}>city: {sity ? sity.name : ''}</div>
 
             <div className={style.btc}>
               <div className={style.balance}>btc_balance: {userInfo?.btc_balance ? userInfo?.btc_balance : ''}</div>
@@ -108,7 +95,7 @@ export const Profile = observer(() => {
               <CustomButton size="full" onClick={toggleModal}>
                 Изменить профиль
               </CustomButton>
-              {/* <button onClick={() => changeLogoUser(userInfo.id, file)}>kkkk</button> */}
+              
             </div>
             <div className={style.btns}>
             <CustomModal toggleModal={modal2.toggleModal} isVisible={modal2.isVisible}>

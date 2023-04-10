@@ -21,8 +21,7 @@ export const CartCard: FC<any> = ({ product }) => {
     fetchSingleProduct();
   }, [keyVal]);
 
-  console.log('Продукт дата', productData);
-  console.log('Продукты', product.value);
+  
 
   return (
     <div className={style.card}>

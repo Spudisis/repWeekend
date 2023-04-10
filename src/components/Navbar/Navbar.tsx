@@ -6,12 +6,7 @@ export const Navbar = () => {
   return (
     <nav className={style.navbar}>
       <div className={style.links}>
-        <NavLink to={'/'} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : style.link)}>
-          Категории
-        </NavLink>
-        <NavLink to={'/'} className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : style.link)}>
-          Магазины
-        </NavLink>
+        
       </div>
       <div className={style.linksIcon}>
         <NavLink className={({ isActive }) => (isActive ? `${style.linkIcon} ${style.active}` : style.linkIcon)} to="/cart">

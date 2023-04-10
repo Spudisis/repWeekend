@@ -34,11 +34,11 @@ export const ChooseCity = ({value, func}:any) => {
         f()
     }, [page])
     React.useEffect(()=>{
-        console.log(selectCity)
+       
         func && func(selectCity)
     }, [selectCity])
     const ChangePage = (next:boolean)=>{
-        console.log(next)
+      
         if (next){
             if (object.total> page*10){
                 

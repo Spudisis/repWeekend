@@ -36,6 +36,14 @@
   position: absolute;
   right: 0;
   width: 150px;
+  cursor: pointer;
+}
+
+.flex{
+  display: flex;
+  h2 {
+    margin-right: 20px;
+  }
 }
 
 .pagination {
@@ -61,4 +69,5 @@
   left: 0;
   position: absolute;
   width: 150px;
+  cursor: pointer;
 }

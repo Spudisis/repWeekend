@@ -23,6 +23,7 @@ export const SingleMarket = () => {
     }
   }, []);
 
+  
   return (
     <Layout>
       <div className={style.singleMarket}>

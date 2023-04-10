@@ -6,7 +6,11 @@
 
   margin-top: 30px;
 }
-
+.image{
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
 .block {
   display: flex;
   flex-direction: column;

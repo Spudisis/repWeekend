@@ -5,14 +5,15 @@ import { InstanceMarket } from '../../http/Agent/Market.agent';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import Title from '@Components/Title';
+import { FormControl, MenuItem, Select } from '@mui/material';
 export const Home = () => {
   const [allMarket, setAllMarket] = useState<any>();
-
+  const [sort, setSort] = useState('rating')
   const [itemOffset, setItemOffset] = useState(0);
   useEffect(() => {
     try {
       const fetchMarket = async () => {
-        const data = await InstanceMarket.getAllMarkets('rating', 12, itemOffset);
+        const data = await InstanceMarket.getAllMarkets('rating', 8, itemOffset);
         setAllMarket(data);
       };
       fetchMarket();
@@ -22,15 +23,30 @@ export const Home = () => {
   }, [itemOffset]);
 
   const handlePageClick = (event: any) => {
-    console.log(event.selected);
-    const newOffset = event.selected + 1;
+    
+    const newOffset = ((event.selected) * 8) ;
     setItemOffset(newOffset);
   };
   return (
     <Layout>
       <main className={style.main}>
         <div className="container">
+          <div className={style.flex}>
           <Title headingType="h2">Магазины</Title>
+            <Select
+              
+              value={sort}
+              onChange={(e:any)=>setSort(e.target.value)}
+              
+            >
+              <MenuItem value={'rating'}>
+                <em>rating</em>
+              </MenuItem>
+              
+            </Select>
+          </div>
+         
+          
           <div className={style.wrapper}>
             <div className={style.wrapperMarkets}>
               {allMarket?.map((shop: any) => (
@@ -57,7 +73,7 @@ export const Home = () => {
                   onPageChange={handlePageClick}
                   pageClassName={style.item + ' ' + style.paginationPage}
                   pageRangeDisplayed={5}
-                  pageCount={10}
+                  pageCount={15}
                   previousLabel="< previous"
                   renderOnZeroPageCount={null}
                 />

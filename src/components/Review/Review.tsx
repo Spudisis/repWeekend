@@ -22,7 +22,7 @@ export const Review = ({id}:{id:number}) => {
         <Typography variant="h4" component='h2'>Комментарии</Typography>
         <div>{data.length>0 ? data.map((elem:any)=><Box mt={2} mb={2} key={elem.id}>
             <div>
-                <Typography>Owner comment: {elem.owner_id}</Typography>
+                
                 <Rating name="read-only" value={elem.rate} readOnly disabled />
             </div>
                 <Typography component="p">{elem.text}</Typography>

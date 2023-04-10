@@ -34,7 +34,7 @@ class AuthStatus {
         try {
                 const data = await InstancePhoto.getPhoto(this.userInfo.avatar)
             
-                this.avatar = data;
+                this.avatar = window.btoa(data);
             } catch  {
             
         }

@@ -11,6 +11,11 @@
   border-radius: $radius-8;
   width: 270px;
 }
+.image{
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+}
 .name,
 .price {
   font-size: 20px;
