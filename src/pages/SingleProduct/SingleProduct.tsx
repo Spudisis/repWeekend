@@ -9,7 +9,7 @@ import { Review } from '@Components/Review/Review';
 export const SingleProduct = () => {
   const [currentProduct, setCurrentProduct] = useState<any>();
   const { id } = useParams();
-
+    
   useEffect(() => {
     const currentProductPage = async () => {
       const data = await InstanceCart.getProduct(id);

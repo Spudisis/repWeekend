@@ -18,10 +18,10 @@ class Registration {
                 uid_captcha: this._captcha.uid,
                 value_captcha: 'gas'
               })
-              console.log(data)
-            StoreAuthStatus.statusAuth = true    
+
+              return data
         } catch  {
-            console.log('warning auth')
+            console.log('warning reg')
         }
         
     }

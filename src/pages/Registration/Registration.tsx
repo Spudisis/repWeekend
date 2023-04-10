@@ -9,28 +9,35 @@ import Title from '@Components/Title';
 import { useNavigate } from 'react-router-dom';
 
 export const Registration = observer(() => {
-  const { statusAuth } = StoreAuthStatus;
+  const { statusAuth, checkAuth } = StoreAuthStatus;
   const redirect = useNavigate()
   const { getCaptcha, signUp } = StoreRegistration;
   const [login, setLogin] = React.useState('');
   const [pass, setPass] = React.useState('');
+ 
 
   React.useEffect(()=>{
     if (statusAuth) redirect('/profile')
   }, [statusAuth])
 
-  React.useEffect(() => {
-    getCaptcha();
-  }, []);
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    signUp({ login, pass });
+    try {
+      await getCaptcha();
+      const data =  await signUp({ login, pass });
+      console.log(data)
+      if (data.id){
+        redirect('/login')
+      }
+    } catch  {
+      
+    }
+   
   };
 
   return (
     <Layout>
-      {/* status: {statusAuth ? 'da' : 'net'} */}
+     
       <form className={style.form}>
         <Title headingType="h3" position="center">
           Регистрация

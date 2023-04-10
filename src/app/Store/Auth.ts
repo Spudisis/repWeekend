@@ -4,7 +4,7 @@ import { InstanceUser } from "../../http/Agent/User.agent";
 import { InstancePhoto } from "../../http/Agent/Photo.agent";
 
 class AuthStatus {
-    private _statusAuth =  false
+    _statusAuth =  false
     constructor(){
         makeAutoObservable(this, {})
         reaction(()=> this._statusAuth, ()=>this.checkAuth())

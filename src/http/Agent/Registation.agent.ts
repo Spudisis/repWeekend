@@ -1,4 +1,8 @@
+import { StoreLogin } from "@Pages/Login/store/store";
+import { StoreAuthStatus } from "../../app/Store/Auth";
 import { BasicAgent } from "./Basic.agent";
+import { InstanceLogin } from "./Login.agent";
+import { InstanceUser } from "./User.agent";
 
 class Registation extends BasicAgent{
     constructor(){
@@ -7,7 +11,8 @@ class Registation extends BasicAgent{
     async createUser(body:any){
         const {data} = await this._http.post<any>(`/user/`, body);
         console.log(data)
-        localStorage.setItem('token', data.access_token)
+       
+        
         return data
     }
 }

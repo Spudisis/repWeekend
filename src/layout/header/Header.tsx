@@ -8,9 +8,10 @@ import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
 import { StoreAuthStatus } from '../../app/Store/Auth';
 
 import { ChooseCountry } from '@Components/ChooseCountry/ChooseCountry';
+import { observer } from 'mobx-react';
 
 
-export const Header = () => {
+export const Header = observer(() => {
   const { statusAuth, userInfo } = StoreAuthStatus;
 
   console.log(statusAuth);
@@ -40,4 +41,4 @@ export const Header = () => {
       </div>
     </header>
   );
-};
+});

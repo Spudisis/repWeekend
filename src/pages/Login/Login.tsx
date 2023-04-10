@@ -31,7 +31,7 @@ export const Login = observer(() => {
 
   return (
     <Layout>
-      status: {statusAuth ? 'da' : 'net'}
+      
       <form className={style.form}>
         <Title position="center" headingType="h3">
           Авторизация
