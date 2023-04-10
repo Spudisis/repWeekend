@@ -8,6 +8,7 @@ import { SingleMarket } from '@Pages/SingleMarket/SingleMarket';
 import { NotFound } from '@Pages/NotFound/NotFound';
 import { Profile } from '@Pages/Profile/Profile';
 import { SingleProduct } from '@Pages/SingleProduct/SingleProduct';
+import { Admin } from '@Pages/Admin/Admin';
 
 export const AppRouter = () => {
   return (
@@ -24,6 +25,7 @@ export const AppRouter = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 };

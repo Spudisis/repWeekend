@@ -2,10 +2,8 @@
 .singleMarket {
 }
 .wrapper {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 .empty {
   font-size: 50px;
