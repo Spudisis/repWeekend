@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { StoreAuthStatus } from '../../app/Store/Auth';
 
 export class BasicAgent {
   protected _http: AxiosInstance;
