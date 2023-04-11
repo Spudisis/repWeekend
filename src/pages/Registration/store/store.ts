@@ -1,6 +1,5 @@
 import { makeAutoObservable } from 'mobx';
 import { InstanceLogin } from '../../../http/Agent/Login.agent';
-import { StoreAuthStatus } from '../../../app/Store/Auth';
 import { InstanceRegistration } from '../../../http/Agent/Registation.agent';
 class Registration {
   constructor() {
@@ -14,7 +13,7 @@ class Registration {
       const data = await InstanceRegistration.createUser({
         username: body.login,
         password: body.pass,
-        role_name: 'admin',
+        role_name: 'user',
         uid_captcha: this._captcha.uid,
         value_captcha: 'gas',
       });
