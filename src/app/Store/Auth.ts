@@ -24,8 +24,8 @@ class AuthStatus {
   checkAuth = async () => {
     try {
       const userMe = await InstanceLogin.getInfoMe();
-      const data = await InstanceUser.getUserById(userMe.uid)
-      console.log(data)
+      const data = await InstanceUser.getUserById(userMe.uid);
+      console.log(data);
       this.userInfo = data;
       this.statusAuth = true;
       this.getLogo();
@@ -33,6 +33,14 @@ class AuthStatus {
       this.statusAuth = false;
     }
   };
+  logout = () => {
+    try {
+      this.statusAuth = false;
+      this.userInfo = null;
+      localStorage.removeItem('token');
+    } catch (err) {}
+  };
+
   getLogo = async () => {
     try {
       const data = await InstancePhoto.getPhoto(this.userInfo.avatar);

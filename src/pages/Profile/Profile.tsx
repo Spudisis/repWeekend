@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StoreAuthStatus } from '../../app/Store/Auth';
 import { useNavigate } from 'react-router-dom';
 import { ProfileStore } from './store/store';
@@ -15,9 +15,11 @@ import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
 import { Deposit } from '@Pages/payment/Deposit';
 import { CustomLink } from '@Components/CustomLink/CustomLink';
 import { Withdraw } from '@Pages/payment/Withdraw';
+import { InstanceUsers } from '../../http/Agent/Users.agent';
 
 export const Profile = observer(() => {
   const { statusAuth, userInfo, getLogo, avatar } = StoreAuthStatus;
+  const [balance, setBalance] = useState<any>();
 
   const { getOneCity, changeDataUser, changePassword } = ProfileStore;
 
@@ -42,11 +44,27 @@ export const Profile = observer(() => {
 
   useEffect(() => {
     !statusAuth && redirect('/login');
-  }, []);
+  }, [statusAuth]);
 
   useEffect(() => {
     InstanceCart.getCart();
   }, []);
+
+  useEffect(() => {
+    if (statusAuth && userInfo && userInfo.id) {
+      try {
+        const fetchBalance = async () => {
+          if (userInfo.id) {
+            const data = await InstanceUsers.getUserBalance(userInfo.id);
+            setBalance(data);
+          }
+        };
+        fetchBalance();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }, [statusAuth, userInfo]);
 
   const Change = (n: any) => {
     if (n) {
@@ -89,8 +107,19 @@ export const Profile = observer(() => {
               <div className={style.avatar} style={{ background: `url(${avatar})` }}></div>
 
               <div className={style.btc}>
-                <div className={style.balance}>btc_balance: {userInfo?.btc_balance ? userInfo?.btc_balance : ''}</div>
-                <div className={style.balance}>btc_address: {userInfo?.btc_address ? userInfo?.btc_address : ''}</div>
+                <div className={style.balance}>
+                  btc_balance:
+                  {balance &&
+                    balance?.map((item: any) => (
+                      <div className={style.balanceCurr} key={item.currency}>
+                        <p>{item.balance}</p>
+                        <p>{item.currency}</p>
+                      </div>
+                    ))}
+                </div>
+                <div className={style.balance}>
+                  btc_address: <p>{userInfo?.btc_address ? userInfo?.btc_address : ''}</p>
+                </div>
               </div>
 
               <div className={style.btns}>

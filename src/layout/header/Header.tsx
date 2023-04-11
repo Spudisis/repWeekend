@@ -1,6 +1,6 @@
 import style from './Header.module.scss';
 import { Navbar } from '@Components/Navbar/Navbar';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { InputSearch } from '@Components/InputSearch/InputSearch';
 import { CustomLink } from '@Components/CustomLink/CustomLink';
 import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
@@ -9,11 +9,11 @@ import { StoreAuthStatus } from '../../app/Store/Auth';
 
 import { ChooseCountry } from '@Components/ChooseCountry/ChooseCountry';
 import { observer } from 'mobx-react';
+import { CustomButton } from '@Components/CustomButton/CustomButton';
 
 export const Header = observer(() => {
-  const { statusAuth, userInfo } = StoreAuthStatus;
+  const { statusAuth, userInfo, logout } = StoreAuthStatus;
 
-  
   return (
     <header className={style.header}>
       <div className="container">
@@ -24,11 +24,13 @@ export const Header = observer(() => {
             </Link>
 
             <InputSearch />
-            {!statusAuth && (
+            {!statusAuth ? (
               <div className={style.auth}>
                 <CustomLink path="/login">Войти</CustomLink>
                 <CustomLink path="/registration">Зарeгистрироваться</CustomLink>
               </div>
+            ) : (
+              <CustomButton onClick={logout}>Выйти</CustomButton>
             )}
           </div>
           <div className={style.headerBottom}>
