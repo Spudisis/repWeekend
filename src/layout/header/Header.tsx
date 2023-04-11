@@ -1,6 +1,6 @@
 import style from './Header.module.scss';
 import { Navbar } from '@Components/Navbar/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { InputSearch } from '@Components/InputSearch/InputSearch';
 import { CustomLink } from '@Components/CustomLink/CustomLink';
 import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
@@ -9,7 +9,6 @@ import { StoreAuthStatus } from '../../app/Store/Auth';
 
 import { ChooseCountry } from '@Components/ChooseCountry/ChooseCountry';
 import { observer } from 'mobx-react';
-
 
 export const Header = observer(() => {
   const { statusAuth, userInfo } = StoreAuthStatus;
@@ -35,6 +34,9 @@ export const Header = observer(() => {
           <div className={style.headerBottom}>
             <ChooseCountry />
             <ChooseCity />
+            <NavLink className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : style.link)} to="/deal">
+              Сделки
+            </NavLink>
             <Navbar />
           </div>
         </div>

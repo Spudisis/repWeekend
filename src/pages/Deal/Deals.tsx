@@ -2,6 +2,7 @@ import { Button, Form, ListGroup, Modal } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { InstanceDeals } from '../../http/Agent/Deals.agent';
 import { observer } from 'mobx-react';
+import style from './Deal.module.scss';
 
 export const DisputeModal = ({ show, setShow, id }: any) => {
   const [titleValue, setTitleValue] = useState('');
@@ -14,6 +15,7 @@ export const DisputeModal = ({ show, setShow, id }: any) => {
     setDescriptionValue('');
   };
 
+  console.log(titleValue, titleValue);
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -119,10 +121,11 @@ export const Deals = observer(() => {
   };
 
   return (
-    <ListGroup>
+    <ListGroup className={style.dealsList}>
       <DisputeModal show={show} setShow={setShow} id={id} />
       {pendingDeals.map((item) => (
         <Deal
+          key={item.id}
           title={item.title}
           amount={item.price}
           currency={item.currency.toUpperCase()}

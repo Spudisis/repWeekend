@@ -9,6 +9,7 @@ import { NotFound } from '@Pages/NotFound/NotFound';
 import { Profile } from '@Pages/Profile/Profile';
 import { SingleProduct } from '@Pages/SingleProduct/SingleProduct';
 import { Admin } from '@Pages/Admin/Admin';
+import Deal from '@Pages/Deal/Deal';
 
 export const AppRouter = () => {
   return (
@@ -25,7 +26,8 @@ export const AppRouter = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="*" element={<NotFound />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin/*" element={<Admin />} />
+      <Route path="/deal/*" element={<Deal />} />
     </Routes>
   );
 };

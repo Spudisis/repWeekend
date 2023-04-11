@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 // @import 'bootstrap/dist/css/bootstrap.min.css';
+
 @import './variables';
 @import 'react-toastify/dist/ReactToastify.css';
 * {
@@ -14,7 +15,7 @@
   margin: 0 auto;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
 }
 

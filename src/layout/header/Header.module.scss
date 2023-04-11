@@ -26,7 +26,15 @@
     gap: 30px;
   }
 }
-
+.link {
+  font-size: 26px;
+  font-weight: 400;
+  color: $dark-color;
+  transition: color 0.2s ease-in-out;
+  &.active {
+    color: $dark-teal-color;
+  }
+}
 .wrapper {
   display: flex;
   align-items: center;

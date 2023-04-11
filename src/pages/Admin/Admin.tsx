@@ -5,6 +5,7 @@ import { Navbar, Nav, Button, Form, Modal, Container, Toast, NavLink } from 'rea
 import { Route, Routes } from 'react-router-dom';
 import { AdminNotifications } from './AdminNotifications';
 import { AdminDispute } from './AdminDispute';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export const Admin = () => {
   return (
@@ -14,12 +15,12 @@ export const Admin = () => {
       </header>
       <Navbar bg={'light'} expand={'lg'}>
         <Nav className={'mr-auto'}>
-          {/* <LinkContainer to={'/admin/notifications'}>
+          <LinkContainer to={'/admin/notifications'}>
             <NavLink>Уведомления</NavLink>
           </LinkContainer>
           <LinkContainer to={'/admin/dispute'}>
             <NavLink>Решение споров</NavLink>
-          </LinkContainer> */}
+          </LinkContainer>
         </Nav>
       </Navbar>
       <Routes>

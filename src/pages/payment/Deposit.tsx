@@ -2,22 +2,14 @@ import { Alert, Button, Card, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { InstancePayments } from '../../http/Agent/Payments.agent';
 import { observer } from 'mobx-react';
-import { useStores } from '../../hooks/stores';
+import { StoreAuthStatus } from '../../app/Store/Auth';
 
 export const Deposit = observer(() => {
   const [selectedCrypto, setSelectedCrypto] = useState('');
   const [amountValue, setAmountValue] = useState('');
   const [addressValue, setAddressValue] = useState('');
-
   const [error, setError] = useState(false);
-
-  const { auth } = useStores();
-
-  console.log(auth);
-
-  auth.userInfo = {
-    id: 12,
-  };
+  const { userInfo } = StoreAuthStatus;
 
   const handleSelect = (event: any) => {
     setSelectedCrypto(event.target.value);
@@ -29,14 +21,13 @@ export const Deposit = observer(() => {
 
       const gatewayId = gateways.find((i) => i.currency.includes(selectedCrypto))?.id;
 
-      // if (!gatewayId)
-      //     return setError(true);
+      // if (!gatewayId) return setError(true);
 
       // const data = await InstancePayments.paymentDeposit({
-      //     gateway_id: gatewayId,
-      //     amount: parseFloat(amountValue.replace(',', '.')),
-      //     user_id: auth.userInfo.id,
-      //     currency: selectedCrypto,
+      //   gateway_id: gatewayId,
+      //   amount: parseFloat(amountValue.replace(',', '.')),
+      //   user_id: userInfo.id,
+      //   currency: selectedCrypto,
       // });
 
       setError(false);

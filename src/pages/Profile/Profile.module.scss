@@ -2,8 +2,33 @@
 
 .wrapper {
   display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+.user_left {
+  display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.user_payment {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.user_right {
+  width: 600px;
+  form {
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    button {
+      margin-top: 20px;
+    }
+  }
 }
 .user {
   display: flex;
@@ -14,6 +39,7 @@
   width: 200px;
   height: 200px;
   border-radius: $radius-8;
+  background-size: cover !important;
 }
 .name {
   font-size: 24px;

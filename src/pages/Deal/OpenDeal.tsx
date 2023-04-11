@@ -1,11 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { InstanceDeals } from '../../http/Agent/Deals.agent';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InstanceUser } from '../../http/Agent/User.agent';
 import { InstanceUsers } from '../../http/Agent/Users.agent';
 import { Button, Form } from 'react-bootstrap';
+import Title from '@Components/Title';
+import style from './Deal.module.scss';
+import { StoreAuthStatus } from '../../app/Store/Auth';
 
 export const OpenDeal = () => {
+  const { userInfo } = StoreAuthStatus;
+
   const { id } = useParams();
 
   const [userBalance, setUserBalance] = useState<{ currency: string; balance: number }[]>([]);
@@ -42,7 +47,7 @@ export const OpenDeal = () => {
         price: amount,
         currency: selected.toLowerCase(),
         description,
-        customer_id: 121,
+        customer_id: userInfo?.id,
         performer_id: id,
       });
     } catch (e) {
@@ -51,11 +56,11 @@ export const OpenDeal = () => {
   };
 
   return (
-    <div>
-      <h1>
+    <>
+      <Title headingType="h2">
         {id} {userBalance.map((i) => i.balance + ' ' + i.currency)}
-      </h1>
-      <Form onSubmit={handleSubmit}>
+      </Title>
+      <Form onSubmit={handleSubmit} className={style.form}>
         <Form.Group controlId="formAmount">
           <Form.Label>Название сделки:</Form.Label>
           <Form.Control type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
@@ -68,11 +73,15 @@ export const OpenDeal = () => {
         <Form.Group>
           <Form.Label>Выберите криптовалюту сделки:</Form.Label>
           <Form.Control as="select" value={selected} onChange={handleSelectChange}>
-            {userBalance.map((userBalance) => (
-              <option key={userBalance.currency} value={userBalance.balance + ' ' + userBalance.currency.toUpperCase()}>
-                {userBalance.balance + ' ' + userBalance.currency.toUpperCase()}
-              </option>
-            ))}
+            {userBalance.length > 0 ? (
+              userBalance.map((userBalance) => (
+                <option key={userBalance.currency} value={userBalance.balance + ' ' + userBalance.currency.toUpperCase()}>
+                  {userBalance.balance + ' ' + userBalance.currency.toUpperCase()}
+                </option>
+              ))
+            ) : (
+              <div>Пусто...</div>
+            )}
           </Form.Control>
         </Form.Group>
 
@@ -80,6 +89,6 @@ export const OpenDeal = () => {
           Открыть сделку
         </Button>
       </Form>
-    </div>
+    </>
   );
 };
