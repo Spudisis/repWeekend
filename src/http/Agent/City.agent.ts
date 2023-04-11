@@ -6,17 +6,17 @@ class City extends BasicAgent{
     }
     async getAllCity(limit=10, offset=0){
         const { data } = await this._http.get<any>(`/city/?limit=${limit}&offset=${offset}`);
-        console.log(data)
+       
         return data;    
     }
     async getOneCityById(id:number){
         const { data } = await this._http.get<any>(`/city/${id}`);
-        console.log(data)
+       
         return data; 
     }
     async getOneCityByName(name:string){
         const { data } = await this._http.get<any>(`/city/${name}`);
-        console.log(data)
+
         return data; 
     }
 }

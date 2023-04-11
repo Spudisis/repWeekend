@@ -6,7 +6,7 @@ class Price extends BasicAgent{
     }
     async getCurrencyPrice(){
         const {data} = await this._http.post<any>(`/price/`);
-        console.log(data)
+       
         return data
     }
 }

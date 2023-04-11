@@ -6,7 +6,7 @@ class Review extends BasicAgent{
     }
     async getReviewProduct(id:number){
         const {data} = await this._http.get<any>(`/review/${id}`);
-        console.log(data)
+       
         return data
     }
 }

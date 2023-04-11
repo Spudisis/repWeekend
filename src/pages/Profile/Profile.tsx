@@ -18,6 +18,7 @@ import { Withdraw } from '@Pages/payment/Withdraw';
 
 export const Profile = observer(() => {
   const { statusAuth, userInfo, getLogo, avatar } = StoreAuthStatus;
+
   const { getOneCity, changeDataUser, changePassword } = ProfileStore;
 
   const [object, setObject] = React.useState({

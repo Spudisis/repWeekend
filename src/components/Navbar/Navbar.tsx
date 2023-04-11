@@ -1,10 +1,9 @@
 import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import style from './Navbar.module.scss';
 import { HiOutlineUser, HiOutlineHeart, HiOutlineShoppingCart, HiOutlineBell } from 'react-icons/hi';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { InstanceTicket } from '../../http/Agent/Ticket.agent';
-import { TextFields } from '@mui/icons-material';
 
 const stylesa = {
   position: 'absolute' as 'absolute',
@@ -36,21 +35,7 @@ export const Navbar = () => {
       setTicket(data.items);
     } catch {}
   };
-  React.useEffect(() => {
-    ticketsRead();
-  }, [page]);
 
-  const handleBack = () => {
-    if (page > 0) {
-      setPage(page - 1);
-    }
-  };
-  const handleNext = () => {
-    if (page >= total) {
-      return;
-    }
-    setPage(page + 1);
-  };
   const SendTicket = async () => {
     try {
       const data = await InstanceTicket.createTicket({
@@ -99,27 +84,6 @@ export const Navbar = () => {
               </Button>
               {err && <label>Не удалось добавить</label>}
             </div>
-            {/* {ticket.length > 0
-              ? ticket.map((elem: any) => (
-                  <>
-                    <Typography
-                      id="modal-modal-title"
-                      variant="h6"
-                      component="h2"
-                      classes={elem.status === 'new' ? `${style.colorRed} ${style.bold}` : `${style.bold}`}
-                    >
-                      {elem.tag}
-                    </Typography>
-                    <Typography sx={{ mt: 2 }}>{elem.content}</Typography>
-                  </>
-                ))
-              : 'Нет тикетов'}
-            {ticket.length > 0 && (
-              <>
-                <Button onClick={() => handleBack()}>back</Button>
-                <Button onClick={() => handleNext()}>next</Button>
-              </>
-            )} */}
           </Box>
         </Modal>
       </div>

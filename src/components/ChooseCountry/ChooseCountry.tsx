@@ -4,6 +4,7 @@ import s from './ChooseCity.module.scss';
 import { InstanceCity } from '../../http/Agent/City.agent';
 import { styled } from '@mui/system';
 import { InstanceCountry } from '../../http/Agent/Country.agent';
+import { StoreAuthStatus } from '../../app/Store/Auth';
 
 const StyledGroup = styled(ButtonGroup)({
   width: '100%',
@@ -13,46 +14,44 @@ const StyledButton = styled(Button)({
   width: '100%',
 });
 
-export const ChooseCountry = ({value, func}:any) => {
-    const [selectCity, setSelectedCity]= React.useState<any>(value? value :"Country") 
-    const [object, setObject] = React.useState<any>(null)
-    const [AllCity, setAllCity] =React.useState([])
-    const [load, setLoad] = React.useState(false)
-    const [page, setPage] = React.useState(0)
+export const ChooseCountry = ({ value, func }: any) => {
+  const { statusAuth } = StoreAuthStatus;
+  const [selectCity, setSelectedCity] = React.useState<any>(value ? value : 'Country');
+  const [object, setObject] = React.useState<any>(null);
+  const [AllCity, setAllCity] = React.useState([]);
+  const [load, setLoad] = React.useState(false);
+  const [page, setPage] = React.useState(0);
 
-    React.useEffect(()=>{
-        const f = async ()=>{
-            try {
-                setLoad(true)
-                const data = await InstanceCountry.getAllCountry(true, 10, page)
-                setObject(data)
-                setAllCity(data.items)
-            } catch  {  
-            } finally{
-                setLoad(false)
-            }
+  React.useEffect(() => {
+    const f = async () => {
+      if (statusAuth)
+        try {
+          setLoad(true);
+          const data = await InstanceCountry.getAllCountry(true, 10, page);
+          setObject(data);
+          setAllCity(data.items);
+        } catch {
+        } finally {
+          setLoad(false);
         }
-        f()
-    }, [page])
-    React.useEffect(()=>{
-       
-        func && func(selectCity)
-    }, [selectCity])
-    const ChangePage = (next:boolean)=>{
-       
-        if (next){
-            if (object.total> page*10){
-                
-                setPage(page+1)
-            }
-        }else{
-            if (0< page*10){
-                setPage(page-1)
-            }
-        }
-
+    };
+    f();
+  }, [page, statusAuth]);
+  React.useEffect(() => {
+    func && func(selectCity);
+  }, [selectCity]);
+  const ChangePage = (next: boolean) => {
+    if (next) {
+      if (object.total > page * 10) {
+        setPage(page + 1);
+      }
+    } else {
+      if (0 < page * 10) {
+        setPage(page - 1);
+      }
     }
- 
+  };
+
   return (
     <div className={s.block}>
       <Select
@@ -70,7 +69,7 @@ export const ChooseCountry = ({value, func}:any) => {
             </MenuItem>
           ))
         ) : (
-          <MenuItem value={'NotFound'}>Нет городов</MenuItem>
+          <MenuItem value={'NotFound'}>Нет стран</MenuItem>
         )}
         <StyledGroup>
           <StyledButton onClick={() => ChangePage(false)} disabled={load}>

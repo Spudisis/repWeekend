@@ -1,21 +1,34 @@
-import { Home } from '@Pages/Home/Home';
 import { AppRouter } from '../router/AppRouter';
 import '../styles/global.scss';
 import React from 'react';
-import { InstanceLogin } from '../http/Agent/Login.agent';
 import { StoreAuthStatus } from './Store/Auth';
 import { observer } from 'mobx-react';
+import { CircularProgress, Container } from '@mui/material';
 
 function App() {
   const { checkAuth } = StoreAuthStatus;
-
+  const [status, setStatus] = React.useState(false);
   React.useEffect(() => {
-    checkAuth();
+    const f = async () => {
+      try {
+        await checkAuth();
+      } catch (error) {
+      } finally {
+        setStatus(true);
+      }
+    };
+    f();
   }, []);
 
   return (
     <>
-      <AppRouter />
+      {status ? (
+        <AppRouter />
+      ) : (
+        <Container fixed sx={{ height: '100vh', justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
+          <CircularProgress />
+        </Container>
+      )}
     </>
   );
 }
