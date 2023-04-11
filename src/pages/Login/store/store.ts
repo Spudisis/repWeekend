@@ -10,7 +10,7 @@ class Login {
 
   SignIn = async (body: any) => {
     try {
-      console.log(body);
+     
       await InstanceLogin.authUser({
         uid_captcha: this._captcha.uid,
         value_captcha: 'gas',
@@ -20,7 +20,7 @@ class Login {
       StoreAuthStatus.statusAuth = true;
       return true;
     } catch (error: any) {
-      console.log('warning auth');
+     
       return error;
     }
   };
@@ -29,7 +29,7 @@ class Login {
       const data = await InstanceLogin.getCaptchaLogin();
       this._captcha = data;
     } catch {
-      console.log('warning capthca');
+     
     }
   };
 }

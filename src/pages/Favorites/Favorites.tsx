@@ -13,9 +13,7 @@ export const Favorites = observer(() => {
     fetchAllFavorites();
   }, []);
 
-  useEffect(() => {
-    console.log('Cтраница фавориты', favorites);
-  }, [favorites]);
+ 
 
   return (
     <Layout>

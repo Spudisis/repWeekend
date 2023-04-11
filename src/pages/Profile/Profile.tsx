@@ -49,13 +49,10 @@ export const Profile = observer(() => {
   }, []);
 
   const Change = (n: any) => {
-    console.log(n);
     if (n) {
       setObject({ ...object, city_id: n.id ? n.id : object.city_id });
     }
   };
-
-  console.log(userInfo);
 
   return (
     <Layout>

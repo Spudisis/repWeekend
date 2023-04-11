@@ -25,7 +25,7 @@ export class BasicAgent {
             localStorage.setItem('token', data.access_token);
             return this._http.request(originRequest);
           } catch (e: any) {
-            console.log('пользователь не атворизован');
+           
           }
         }
         throw error;

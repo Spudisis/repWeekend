@@ -40,7 +40,7 @@ export const OpenDeal = () => {
     event.preventDefault();
 
     try {
-      console.log(selected);
+     
 
       await InstanceDeals.createDeal({
         title,

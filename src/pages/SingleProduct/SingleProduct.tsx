@@ -20,7 +20,7 @@ export const SingleProduct = () => {
     currentProductPage();
   }, []);
 
-  console.log('Cuurentproduct', currentProduct);
+ 
 
   return (
     <Layout>

@@ -13,7 +13,7 @@ import { observer } from 'mobx-react';
 export const Header = observer(() => {
   const { statusAuth, userInfo } = StoreAuthStatus;
 
-  console.log(statusAuth);
+  
   return (
     <header className={style.header}>
       <div className="container">

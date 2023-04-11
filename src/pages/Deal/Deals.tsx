@@ -15,7 +15,7 @@ export const DisputeModal = ({ show, setShow, id }: any) => {
     setDescriptionValue('');
   };
 
-  console.log(titleValue, titleValue);
+ 
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
 

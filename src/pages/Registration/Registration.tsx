@@ -29,7 +29,7 @@ export const Registration = observer(() => {
       setErr('');
       await getCaptcha();
       const data = await signUp({ login, pass });
-      console.log(data);
+     
       if (data.id) {
         await StoreLogin.getCaptcha();
         await StoreLogin.SignIn({ login, pass });

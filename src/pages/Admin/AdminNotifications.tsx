@@ -105,7 +105,7 @@ export const AdminNotificationsForUser = () => {
           .trim()
           .split(',')
           .map((elem) => +elem);
-        console.log(ids);
+      
         await InstanceAdminNotifications.createNotificationForUser({
           user_ids: ids,
           name: nameValue,
