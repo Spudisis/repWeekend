@@ -13,7 +13,8 @@ export const Login = observer(() => {
   const { getCaptcha, SignIn } = StoreLogin;
   const [login, setLogin] = React.useState('goodman');
   const [pass, setPass] = React.useState('password');
-
+  const [err, setErr] = React.useState('');
+  const [loader, setLoader] = React.useState(false);
   const redirect = useNavigate();
 
   React.useEffect(() => {
@@ -26,12 +27,18 @@ export const Login = observer(() => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    SignIn({ login, pass });
+    setLoader(true);
+    const data = await SignIn({ login, pass });
+    if (data === true) {
+      redirect('/profile');
+    } else {
+      setLoader(false);
+      setErr(data.response.data.detail || 'Непредвиденная ошибка');
+    }
   };
 
   return (
     <Layout>
-      
       <form className={style.form}>
         <Title position="center" headingType="h3">
           Авторизация
@@ -51,7 +58,10 @@ export const Login = observer(() => {
             className={style.input}
             placeholder="Введите пароль"
           />
-          <CustomButton onClick={(e) => handleSubmit(e)}>Отравить</CustomButton>
+          <CustomButton onClick={(e) => handleSubmit(e)} disabled={loader}>
+            Отравить
+          </CustomButton>
+          {err && err}
         </div>
       </form>
     </Layout>

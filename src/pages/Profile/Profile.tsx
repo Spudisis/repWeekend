@@ -15,7 +15,7 @@ import { ChooseCity } from '@Components/ChooseCity/ChooseCity';
 
 export const Profile = observer(() => {
   const { statusAuth, userInfo, getLogo, avatar } = StoreAuthStatus;
-  const {  getOneCity, changeDataUser,changePassword } = ProfileStore;
+  const {   changeDataUser,changePassword } = ProfileStore;
 
   
 

@@ -24,8 +24,9 @@ export const AppRouter = () => {
 
       <Route path="/profile" element={<Profile />} />
       <Route path="/registration" element={<Registration />} />
+      <Route path="/admin/*" element={<Admin />} />
+
       <Route path="*" element={<NotFound />} />
-      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 };

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { InstanceDeals } from '../../http/Agent/Deals.agent';
 import { Button, ListGroup } from 'react-bootstrap';
-
+import s from './Admin.module.scss';
+import { CircularProgress } from '@mui/material';
 export const Deal = ({ title, amount, currency, description, onConfirm, onDispute, status }: any) => {
   return (
     <ListGroup.Item>
@@ -16,7 +17,7 @@ export const Deal = ({ title, amount, currency, description, onConfirm, onDisput
         <div>
           <Button variant="outline-success" onClick={onConfirm}>
             Закрыть в сторону заказчика
-          </Button>{' '}
+          </Button>
           <Button variant="outline-primary" onClick={onDispute}>
             Закрыть в сторону исполнителя
           </Button>
@@ -28,11 +29,17 @@ export const Deal = ({ title, amount, currency, description, onConfirm, onDisput
 
 export const AdminDispute = () => {
   const [deals, setDeals] = useState<any[]>([]);
-
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
     async function fetchData() {
-      const data = await InstanceDeals.getDisputeDeals();
-      setDeals(data);
+      try {
+        setLoader(true);
+        const data = await InstanceDeals.getDisputeDeals();
+        setDeals(data);
+      } catch {
+      } finally {
+        setLoader(false);
+      }
     }
     fetchData();
   }, []);
@@ -51,17 +58,24 @@ export const AdminDispute = () => {
 
   return (
     <ListGroup>
-      {deals.map((item) => (
-        <Deal
-          title={item.title}
-          amount={item.price}
-          currency={item.currency.toUpperCase()}
-          description={item.description}
-          status={item.status}
-          onConfirm={() => handleCustomer(item)}
-          onDispute={() => handlePerformer(item)}
-        />
-      ))}
+      {loader ? (
+        <CircularProgress />
+      ) : deals.length > 0 ? (
+        deals.map((item) => (
+          <Deal
+            key={item.id}
+            title={item.title}
+            amount={item.price}
+            currency={item.currency.toUpperCase()}
+            description={item.description}
+            status={item.status}
+            onConfirm={() => handleCustomer(item)}
+            onDispute={() => handlePerformer(item)}
+          />
+        ))
+      ) : (
+        'Нет Споров'
+      )}
     </ListGroup>
   );
 };

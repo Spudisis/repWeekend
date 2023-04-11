@@ -6,7 +6,7 @@ class Users extends BasicAgent {
   }
   async getUserBalance(id: number) {
     const { data } = await this._http.get<unknown>(`/v1/pay/user/${id}/balance`);
-    console.log(data);
+ 
     return data;
   }
 }

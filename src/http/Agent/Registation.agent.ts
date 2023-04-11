@@ -10,9 +10,7 @@ class Registation extends BasicAgent{
     }
     async createUser(body:any){
         const {data} = await this._http.post<any>(`/user/`, body);
-        console.log(data)
-       
-        
+   
         return data
     }
 }

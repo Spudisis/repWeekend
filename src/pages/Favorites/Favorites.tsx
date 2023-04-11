@@ -23,7 +23,11 @@ export const Favorites = observer(() => {
         <div className="container">
           <Title headingType="h2">Избранное</Title>
           <div className={style.wrapper}>
-            {favorites && favorites?.map((favorite?: any) => <FavoriteCard key={favorite.id} favorite={favorite} />)}
+            {favorites && favorites.length > 0 ? (
+              favorites?.map((favorite?: any) => <FavoriteCard key={favorite.id} favorite={favorite} />)
+            ) : (
+              <div>Нет любимых товаров</div>
+            )}
           </div>
         </div>
       </section>

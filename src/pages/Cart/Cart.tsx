@@ -14,8 +14,7 @@ export const Cart = observer(() => {
   useEffect(() => {
     getAllProducts();
   }, []);
-this,
-  console.log(statusAuth);
+  this, console.log(statusAuth);
   console.log('Корзина', cart);
 
   return (
@@ -24,7 +23,11 @@ this,
         <div className="container">
           <Title headingType="h2">Корзина</Title>
           <div className={style.wrapper}>
-            {cart && cart?.map((product: any) => <CartCard key={product.key} product={product} />)}
+            {cart && cart.length > 0 ? (
+              cart?.map((product: any) => <CartCard key={product.key} product={product} />)
+            ) : (
+              <div>Нет товаров в корзине</div>
+            )}
           </div>
         </div>
       </section>

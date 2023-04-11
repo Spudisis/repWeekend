@@ -16,7 +16,7 @@ class Payments extends BasicAgent {
         },
       ]
     >(`/v1/pay/payment/gateways`);
-    console.log(data);
+   
     return data;
   }
   async paymentDeposit(body: unknown) {
@@ -28,12 +28,12 @@ class Payments extends BasicAgent {
         address: string;
       };
     }>(`/v1/pay/payment/deposit`, body);
-    console.log(data);
+  
     return data;
   }
   async paymentWithdraw(body: unknown) {
     const { data } = await this._http.post<unknown>(`/v1/pay/payment/withdraw`, body);
-    console.log(data);
+   
     return data;
   }
 }

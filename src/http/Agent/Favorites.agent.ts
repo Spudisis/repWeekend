@@ -6,17 +6,17 @@ class Favorites extends BasicAgent{
     }
     async getAllFavorites(limit=10, offset=0): Promise<any> {
         const { data } = await this._http.get<any>(`/favorites/all?limit=${limit}&offset=${offset}`);
-        console.log(data)
+       
         return data;
     }
     async addUserFavorite(body:any): Promise<any> {
         const { data } = await this._http.post<any>(`/favorites/add`, body);
-        console.log(data)
+       
         return data;
     }
     async deleteUserFavorite(body:any): Promise<any> {
         const { data } = await this._http.post<any>(`/favorites/delete`, body);
-        console.log(data)
+       
         return data;
     }
 }

@@ -36,7 +36,7 @@ class Deals extends BasicAgent {
   }
   async closeDeal(id: number) {
     const { data } = await this._http.get<any>(`/v1/pay/deal/${id}/close`);
-    console.log(data);
+    
     return data;
   }
 

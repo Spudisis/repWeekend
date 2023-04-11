@@ -7,22 +7,22 @@ class Cart extends BasicAgent {
   }
   async addToCart(body: any): Promise<any> {
     const { data } = await this._http.post<any>(`/cart/add`, body);
-    console.log(data);
+    
     return data;
   }
   async getCart() {
     const { data } = await this._http.get<any>(`/cart/`);
-    console.log(data);
+   
     return data;
   }
   async removeCart(body: any): Promise<any> {
     const { data } = await this._http.post<any>(`/cart/remove`, body);
-    console.log(data);
+   
     return data;
   }
   async getProduct(id: any) {
     const { data } = await this._http.get<any>(`/product/${id}`);
-    console.log('Агент', data);
+    
     return data;
   }
 }
